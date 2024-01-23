@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Currency Converter</title>
+    <style>
+/* Reset some default styles */
+body, h1, h2, p, select, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+color: black;
+
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+   
+    background-image: url('images/bg_img.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.Currency {
+   
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.converter-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.result-container {
+    margin-top: 15px;
+}
+
+
+.close {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close:hover {
+    background-color: #ccc;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .converter-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .converter-container {
+        width: 100%;
+    }
+}
+
+    </style>
+   
+</head>
+<body>
+    <div class="Currency">
+    <div class="converter-container">
+        <div>
+            <a class=" close" href="index.html">X</a>
+        </div>
+        <h1>Currency Converter</h1>
+        <div class="input-group">
+            <label for="sourceCurrency">Source Currency:</label>
+            <select id="sourceCurrency"></select>
+        </div>
+        <div class="input-group">
+            <label for="destinationCurrency">Destination Currency:</label>
+            <select id="destinationCurrency"></select>
+        </div>
+        <div class="input-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" min="0" step="0.01" placeholder="Enter amount">
+        </div>
+        <button onclick="convert()">Convert</button>
+        <div id="result" class="result-container"></div>
+    </div>
+</div>
+    <script>
+     
+     let data; // Global variable to store currency data
+let sourceCurrencySelect;
+let destinationCurrencySelect;
+
+document.addEventListener("DOMContentLoaded", function () {
+    sourceCurrencySelect = document.getElementById("sourceCurrency");
+    destinationCurrencySelect = document.getElementById("destinationCurrency");
+
+    // Fetch currency data from the provided API
+    fetch("https://www.floatrates.com/daily/gbp.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Unable to fetch currency data. Please try again later.");
+            }
+            return response.json();
+        })
+        .then(apiData => {
+            data = apiData;
+            // Populate currency dropdowns
+            Object.keys(data).forEach(currency => {
+                const option = document.createElement("option");
+                option.value = currency;
+                option.text = currency;
+                sourceCurrencySelect.appendChild(option.cloneNode(true));
+                destinationCurrencySelect.appendChild(option);
+            });
+            // Set default values
+            sourceCurrencySelect.value = "GBP";
+            destinationCurrencySelect.value = "USD";
+        })
+        .catch(error => {
+            console.error(error.message);
+            alert("An error occurred while fetching currency data. Please try again later.");
+        });
+});
+
+// Function to handle conversion
+window.convert = function () {
+    const amountInput = document.getElementById("amount");
+    const resultContainer = document.getElementById("result");
+
+    const sourceCurrency = sourceCurrencySelect.value;
+    const destinationCurrency = destinationCurrencySelect.value;
+    const amount = parseFloat(amountInput.value);
+
+    // Check for valid amount
+    if (isNaN(amount) || amount <= 0) {
+        resultContainer.innerHTML = '<p class="error">Please enter a valid amount.</p>';
+        return;
+    }
+
+    // Perform the conversion
+    const exchangeRate = data[sourceCurrency].rate;
+    const convertedAmount = (amount * exchangeRate).toFixed(2);
+
+    // Display the result
+    const currentDate = new Date().toLocaleDateString("en-GB");
+    const currentTime = new Date().toLocaleTimeString("en-GB");
+    resultContainer.innerHTML = `
+        <p>Source currency: ${sourceCurrency}</p>
+        <p>Destination currency: ${destinationCurrency}</p>
+        <p>Current Exchange Rate: 1 ${sourceCurrency} = ${exchangeRate} ${destinationCurrency}</p>
+        <p>Calculation Timestamp: ${currentDate} at ${currentTime}</p>
+        <p>Amount of transaction: ${amount} ${sourceCurrency} = ${convertedAmount} ${destinationCurrency}</p>
+    `;
+};
+
+    </script>
+</body>
+</html>
