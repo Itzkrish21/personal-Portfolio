@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Price Chart</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  
+/* Reset some default styles */
+body, h1, h2, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+  background:#333;
+    color: #fff;
+}
+
+/* Style the chart container */
+#chart-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the canvas */
+#fuelChart {
+  width: 100%;
+  height: auto;
+}
+
+/* Style the controls */
+#controls {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Style the buttons in the controls */
+button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Style the select dropdowns in the controls */
+select {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color:red;
+}
+
+/* Media query for responsiveness */
+@media only screen and (max-width: 600px) {
+  #chart-container {
+    padding: 10px;
+  }
+
+  button {
+    font-size: 12px;
+  }
+
+  select {
+    font-size: 12px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <a class=" close" href="index.html">X</a>
+</div>
+  <div id="chart-container">
+    <canvas id="fuelChart"></canvas>
+
+
+  <div id="controls">
+    <button onclick="scrollBackward()">Backward</button>
+    <button onclick="scrollForward()">Forward</button>
+    <label for="mode">Mode:</label>
+    <select id="mode" onchange="changeMode()">
+      <option value="historical">Historical</option>
+      <option value="forecast">Forecast</option>
+    </select>
+    <label for="fuelType">Fuel Type:</label>
+    <select id="fuelType" onchange="filterChart()">
+      <option value="all">All</option>
+      <option value="D7DV">Liquid Fuels</option>
+      <option value="D7DW">Solid Fuels</option>
+      <option value="D7DU">Gas</option>
+      <option value="D7DT">Electricity</option>
+    </select>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="forecaster_script.js"></script>
+</body>
+</html>

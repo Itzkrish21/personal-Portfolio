@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9c74ca75af.js" crossorigin="anonymous"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+
+                <h1><a href="index.html">Krishna Bhagat</a></h1>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>UI/UX Designer</p>
+                <h1>Hi, I'm <span>Krishna</span><br>Bhagat</h1>
+            </div>
+        </div>
+    </div>
+    <!-- -----------about---------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/IMG_0851~2.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Proficient software engineer with strong computer science foundation, specializing in scalable
+                        solutions for complex business challenges. Proficient in multiple programming languages, team
+                        player, and continuous learning.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+                            <li><span>Web Development</span><br>Web app Development</li>
+                            <li><span>App Development</span><br>Building Android/iOS apps</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2021 - Current</span><br>Student Of Staffordshire University</li>
+                            <li><span>2019 - 2021</span><br>Software Engineer At Ilink Digital</li>
+                            <li><span>2017 - 2019</span><br>Internship at Fabcoders </li>
+
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2023-2024</span><br>Msc Computer Science, Staffordshire University</li>
+                            <li><span>2017-2021</span><br>Beachlor of Engineering, Goa university.</li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ---------Skills ---------------- -->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Skills </h1>
+            <div class="services-list">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>Proficient in HTML/CSS, JavaScript, and responsive design, ensuring efficient and visually
+                        appealing web pages across various devices and screen sizes.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fas fa-crop-alt"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>Demonstrate proficiency in user research, wireframing, prototyping, usability testing,
+                        information architecture, UI design, and interaction design to create user-friendly, visually
+                        appealing, and engaging digital products.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fab fa-app-store"></i>
+                    <h2>App Design</h2>
+                    <p>Demonstrate proficiency in UI design, UX design, prototyping, wireframing, graphic design, and
+                        responsive design, showcasing your ability to create visually appealing, intuitive, and usable
+                        apps.</p>
+                    <a href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ----------portfolio------------ -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/weather.png">
+                    <div class="layer">
+                        <h3>weather Forcaster App</h3>
+                        <p>Explore my weather forecasting website, delivering real-time meteorological insights
+                            and accurate forecasts for a seamless and informed planning experience.</p>
+                        <a href="forecaster.html"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/currencyback.png">
+                    <div class="layer">
+                        <h3>Currency Converter App</h3>
+                        <p>Designed a user-friendly currency conversion website providing real-time exchange rates for
+                            seamless and efficient financial transactions.</p>
+                        <a href="currency.html"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.png">
+                    <div class="layer">
+                        <h3>Shopping Website App</h3>
+                        <p>Presenting an immersive online shopping experience, our e-commerce platform offers a diverse
+                            range of products, seamless navigation, and secure transactions for an unparalleled shopping
+                            journey..</p>
+                        <a href="currency.html"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <a href="#" class="btn">See more</a>
+        </div>
+    </div>
+    <!-- ----------contact------------- -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fas fa-paper-plane"></i> krishnabhagat207@gmail.com</p>
+                    <p><i class="fas fa-phone-square-alt"></i> 07721684030</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                        <a href=""><i class="fab fa-twitter-square"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <a href="images/Resume-Krishna-bhagat (2).pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer>
+            <div class="copyright">
+                <p>&copy; Krishna. All rights reserved.</p>
+            </div>
+        </footer>
+
+
+
+        <script>
+
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname) {
+                for (tablink of tablinks) {
+                    tablink.classList.remove("active-link");
+                }
+                for (tabcontent of tabcontents) {
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+
+        </script>
+
+        <script>
+
+            var sidemeu = document.getElementById("sidemenu");
+
+            function openmenu() {
+                sidemeu.style.right = "0";
+            }
+            function closemenu() {
+                sidemeu.style.right = "-200px";
+            }
+
+        </script>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzoLXXJ_8O2nDYDGhMc85MkUCRh9vH9uaORWnL7o6NlynwCtEJr_sbbKWUG8Fxytx0S/exec'
+            const form = document.forms['submit-to-google-sheet']
+            const msg = document.getElementById("msg")
+
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(response => {
+                        msg.innerHTML = "Message sent successfully"
+                        setTimeout(function () {
+                            msg.innerHTML = ""
+                        }, 5000)
+                        form.reset()
+                    })
+                    .catch(error => console.error('Error!', error.message))
+            })
+        </script>
+</body>
+
+</html>
